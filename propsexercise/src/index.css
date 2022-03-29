@@ -51,3 +51,7 @@ code {
 h3,h5{
   margin-left: 30px;
 }
+
+.TableItem img{
+  width: 100px;
+}

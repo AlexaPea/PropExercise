@@ -17,7 +17,7 @@ const [flightInfo, setFlightInfo] = useState([]);
 
             let flightData = [];
 
-            for(let i =0; i< 30;i++){
+            for(let i =0; i< numFlights;i++){
                 flightData.push({
                     imgUrl: data[i].links.patch.small,
                     flightNum: data[i].flight_number,
@@ -32,6 +32,8 @@ const [flightInfo, setFlightInfo] = useState([]);
                 })
             }
 
+            
+
             setFlightInfo(flightData);
 
             // let showInfo = flightData.map((item)=> <TableDisplay key={item.id} img={item.imgUrl} num={item.flightNum} name={item.flightName} success={item.flightSuccess} youtube={item.videoLink} article={item.artLink} wikki={item.wikkiLink} webcast={item.webcastLink}/>);
@@ -44,9 +46,11 @@ const [flightInfo, setFlightInfo] = useState([]);
         })
     }, [])
 
-    console.log(flightInfo)
-    let info = flightInfo.map((item)=> <TableDisplay key={item.id} img={item.imgUrl} num={item.flightNum} name={item.flightName} success={item.flightSuccess} youtube={item.videoLink} article={item.artLink} wikki={item.wikkiLink} webcast={item.webcastLink}/>);
-    console.log(info)
+    // console.log(flightInfo)
+    //map - goes through each object/item in an array
+    //so intro is going through each object and printing it as specified
+    let info = flightInfo.map((item)=> <TableDisplay key={item.id} img={item.imgUrl} num={item.flightNum} name={item.flightName} success={String(item.flightSuccess)} youtube={item.videoLink} article={item.artLink} wikki={item.wikkiLink} webcast={item.webcastLink}/>);
+    // console.log(info)
     
     return (
         <div>
@@ -55,7 +59,8 @@ const [flightInfo, setFlightInfo] = useState([]);
             <h5>Here information regarding each launch is provided</h5>
 
             <TableDisplay/>
-            {/* {showInfo} */}
+            {/* this runs info so the flights appear */}
+            {info}
             
         </div>
     );
